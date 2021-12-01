@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<script src="./scripts/aframe.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="./scripts/aframe-ar.js"></script>
+<script src="./scripts/aframe-vid-shader.min.js"></script>
+<script>
+    window.onload = function () {
+        AFRAME.registerComponent('videohandler1', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#vid1");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.vid.pause();
+                    this.vid.currentTime = 0;
+                }.bind(this));
+            }
+        });
+        AFRAME.registerComponent('videohandler2', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#vid2");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.vid.pause();
+                    this.vid.currentTime = 0;
+                }.bind(this));
+            }
+        });
+        AFRAME.registerComponent('videohandler3', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#vid3");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.vid.pause();
+                    this.vid.currentTime = 0;
+                }.bind(this));
+            }
+        });
+        AFRAME.registerComponent('videohandler4', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#vid4");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.vid.pause();
+                    this.vid.currentTime = 0;
+                }.bind(this));
+            }
+        });
+    };
+</script>
+
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded vr-mode-ui="enabled: false"
+        arjs='trackingMethod: best; sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;'
+        renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;">
+
+        <a-assets>
+            <video src="./videos/RED.mp4" preload="auto" id="vid1" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay muted playsinline>
+            </video>
+            <video src="./videos/BLUE.mp4" preload="auto" id="vid2" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay muted playsinline>
+            </video>
+            <video src="./videos/GREEN.mp4" preload="auto" id="vid3" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay muted playsinline>
+            </video>
+            <video src="./videos/YELLOW.mp4" preload="auto" id="vid4" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay muted playsinline>
+            </video>
+        </a-assets>
+
+
+        <!-- marker 1 -->
+        <a-marker videohandler1 preset='custom' type="pattern" url="./assets/markers/pattern-marker1.patt">
+            <a-entity position="0 0 -3" rotation="0 0 0" material="shader:video;src:#vid1;" scale="0.6 0.6 0.6"
+                obj-model="obj: url(./assets/object_models/Cube_01_3.obj);">
+            </a-entity>
+        </a-marker>
+
+        <!-- marker 2 -->
+        <a-marker videohandler2 preset='custom' type="pattern" url="./assets/markers/pattern-marker2.patt">
+            <a-entity position="0 0 -2.5" rotation="0 0 0" material="shader:video;src:#vid2;" scale="0.6 0.6 0.6"
+                obj-model="obj: url(./assets/object_models/02_Nature.obj);">
+            </a-entity>
+        </a-marker>
+
+        <!-- marker 3 -->
+        <a-marker videohandler3 preset='custom' type="pattern" url="./assets/markers/pattern-marker3.patt">
+            <a-entity position="0 0 -2.5" rotation="0 0 0" material="shader:video;src:#vid3;" scale="0.6 0.6 0.6"
+                obj-model="obj: url(./assets/object_models/03_Elements.obj);">
+            </a-entity>
+        </a-marker>
+
+        <!-- marker 4 -->
+        <a-marker videohandler4 preset='custom' type="pattern" url="./assets/markers/pattern-marker4.patt">
+            <a-entity position="0.5 -1 -4.5" rotation="0 -45 0" material="shader:video;src:#vid4;" scale="1.8 1.8 1.8"
+                obj-model="obj: url(./assets/object_models/04_Gomboc.obj);">
+            </a-entity>
+        </a-marker>
+
+
+        <a-entity rotation-reader camera></a-entity>
+    </a-scene>
+
+
+    <script>
+        // Workaround for an AR.js bug (https://github.com/jeromeetienne/AR.js/issues/410)
+        const sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('loaded', () => {
+            sceneEl.camera = new THREE.PerspectiveCamera();
+        });
+    </script>
+</body>
+
+</html>

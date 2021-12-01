@@ -11,37 +11,30 @@
         arjs='trackingMethod: best; sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;'
         renderer="antialias: true; logarithmicDepthBuffer: true; colorManagement: true;">
 
-        <!-- <a-assets>
-            <video src="assets/mov_bbb.mp4"
-                preload="auto" id="vid" response-type="arraybuffer" loop
-                crossorigin webkit-playsinline autoplay muted playsinline>
-            </video>
-        </a-assets> -->
-
         
         <!-- marker 1 -->
-        <a-marker videohandler1 preset='custom' type="pattern" url="./assets/markers/pattern-marker1.patt">
+        <a-marker preset='custom' type="pattern" url="./assets/markers/pattern-marker1.patt">
             <a-entity position="0 0 -3" rotation="0 0 0" material="shader:video;src:url(./videos/RED.mp4);"
                 scale="0.6 0.6 0.6" obj-model="obj: url(./assets/object_models/Cube_01_3.obj);">
             </a-entity>
         </a-marker>
 
 		<!-- marker 2 -->
-		<a-marker videohandler2 preset='custom' type="pattern" url="./assets/markers/pattern-marker2.patt">
+		<a-marker preset='custom' type="pattern" url="./assets/markers/pattern-marker2.patt">
             <a-entity position="0 0 -2.5" rotation="0 0 0" material="shader:video;src:url(./videos/BLUE.mp4);"
                 scale="0.6 0.6 0.6" obj-model="obj: url(./assets/object_models/02_Nature.obj);">
             </a-entity>
         </a-marker>
 		
 		<!-- marker 3 -->
-		<a-marker videohandler3 preset='custom' type="pattern" url="./assets/markers/pattern-marker3.patt">
+		<a-marker preset='custom' type="pattern" url="./assets/markers/pattern-marker3.patt">
             <a-entity position="0 0 -2.5" rotation="0 0 0" material="shader:video;src:url(./videos/GREEN.mp4);"
                 scale="0.6 0.6 0.6" obj-model="obj: url(./assets/object_models/03_Elements.obj);">
             </a-entity>
         </a-marker>
 		
 		<!-- marker 4 -->
-		<a-marker videohandler4 preset='custom' type="pattern" url="./assets/markers/pattern-marker4.patt">
+		<a-marker preset='custom' type="pattern" url="./assets/markers/pattern-marker4.patt">
             <a-entity position="0.5 -1 -4.5" rotation="0 -45 0" material="shader:video;src:url(./videos/YELLOW.mp4);"
                 scale="1.8 1.8 1.8" obj-model="obj: url(./assets/object_models/04_Gomboc.obj);">
             </a-entity>
